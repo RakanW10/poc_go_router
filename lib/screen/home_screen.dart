@@ -9,8 +9,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            showModalBottomSheet(
+          onPressed: () async {
+            await showModalBottomSheet(
               context: context,
               builder: (_) => Router.withConfig(
                 config: AppRouter.referralConfigs,

@@ -14,81 +14,80 @@ import '../screen/referall/referral_screen_2.dart';
 
 class AppRouter {
   static var rootNavigatorKey = GlobalKey<NavigatorState>();
-  AppRouter._();
-  static GoRouter routerConfig() {
-    return GoRouter(
-      debugLogDiagnostics: true,
-      navigatorKey: rootNavigatorKey,
-      routes: [
-        GoRoute(
-          name: RouteNames.login.name,
-          path: RouteNames.login.path,
-          pageBuilder: (context, state) => const MaterialPage(child: LoginScreen()),
-        ),
-        StatefulShellRoute.indexedStack(
-          builder: (context, state, navigationShell) => HomeTabs(navigationShell: navigationShell),
-          branches: [
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  name: RouteNames.home.name,
-                  path: RouteNames.home.path,
-                  pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
-                ),
-              ],
-            ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  name: RouteNames.market.name,
-                  path: RouteNames.market.path,
-                  pageBuilder: (context, state) => const MaterialPage(child: MarketScreen()),
-                ),
-              ],
-            ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  name: RouteNames.wallet.name,
-                  path: RouteNames.wallet.path,
-                  pageBuilder: (context, state) => const MaterialPage(child: WalletScreen()),
-                ),
-              ],
-            ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  name: RouteNames.more.name,
-                  path: RouteNames.more.path,
-                  pageBuilder: (context, state) => const MaterialPage(child: MoreScreen()),
-                ),
-              ],
-            ),
-          ],
-        ),
-        GoRoute(
-          name: RouteNames.profile.name,
-          path: RouteNames.profile.path,
-          pageBuilder: (context, state) => const MaterialPage(child: ProfileScreen()),
-        ),
-      ],
-    );
-  }
 
-  // sub flows
-  static GoRouter referralConfigs = GoRouter(
-    initialLocation: RouteNames.referral1.path,
+  AppRouter._();
+  static GoRouter routerConfig = GoRouter(
+    debugLogDiagnostics: true,
+    navigatorKey: rootNavigatorKey,
     routes: [
       GoRoute(
-        name: RouteNames.referral1.name,
-        path: RouteNames.referral1.path,
-        pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen1()),
+        name: RouteNames.login.name,
+        path: RouteNames.login.path,
+        pageBuilder: (context, state) => const MaterialPage(child: LoginScreen()),
+      ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => HomeTabs(navigationShell: navigationShell),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: RouteNames.home.name,
+                path: RouteNames.home.path,
+                pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: RouteNames.market.name,
+                path: RouteNames.market.path,
+                pageBuilder: (context, state) => const MaterialPage(child: MarketScreen()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: RouteNames.wallet.name,
+                path: RouteNames.wallet.path,
+                pageBuilder: (context, state) => const MaterialPage(child: WalletScreen()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: RouteNames.more.name,
+                path: RouteNames.more.path,
+                pageBuilder: (context, state) => const MaterialPage(child: MoreScreen()),
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
-        name: RouteNames.referral2.name,
-        path: RouteNames.referral2.path,
-        pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen2()),
+        name: RouteNames.profile.name,
+        path: RouteNames.profile.path,
+        pageBuilder: (context, state) => const MaterialPage(child: ProfileScreen()),
       ),
     ],
   );
+
+  // sub flows
+  static GoRouter get referralConfigs => GoRouter(
+        initialLocation: RouteNames.referral1.path,
+        routes: [
+          GoRoute(
+            name: RouteNames.referral1.name,
+            path: RouteNames.referral1.path,
+            pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen1()),
+          ),
+          GoRoute(
+            name: RouteNames.referral2.name,
+            path: RouteNames.referral2.path,
+            pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen2()),
+          ),
+        ],
+      );
 }
