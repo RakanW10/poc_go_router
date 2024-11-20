@@ -9,12 +9,16 @@ import 'package:poc_go_router/screen/profile_screen.dart';
 import 'package:poc_go_router/screen/wallet_screen.dart';
 
 import '../screen/home_screen.dart';
+import '../screen/referall/referral_screen_1.dart';
+import '../screen/referall/referral_screen_2.dart';
 
 class AppRouter {
+  static var rootNavigatorKey = GlobalKey<NavigatorState>();
   AppRouter._();
   static GoRouter routerConfig() {
     return GoRouter(
       debugLogDiagnostics: true,
+      navigatorKey: rootNavigatorKey,
       routes: [
         GoRoute(
           name: RouteNames.login.name,
@@ -70,4 +74,21 @@ class AppRouter {
       ],
     );
   }
+
+  // sub flows
+  static GoRouter referralConfigs = GoRouter(
+    initialLocation: RouteNames.referral1.path,
+    routes: [
+      GoRoute(
+        name: RouteNames.referral1.name,
+        path: RouteNames.referral1.path,
+        pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen1()),
+      ),
+      GoRoute(
+        name: RouteNames.referral2.name,
+        path: RouteNames.referral2.path,
+        pageBuilder: (context, state) => const MaterialPage(child: ReferralScreen2()),
+      ),
+    ],
+  );
 }

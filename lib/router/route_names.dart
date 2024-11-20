@@ -22,6 +22,14 @@ enum RouteNames {
   profile(
     name: 'profile',
     path: '/profile',
+  ),
+  referral1(
+    name: 'referral1',
+    path: '/referral1',
+  ),
+  referral2(
+    name: 'referral2',
+    path: '/referral2',
   );
 
   final String name;
